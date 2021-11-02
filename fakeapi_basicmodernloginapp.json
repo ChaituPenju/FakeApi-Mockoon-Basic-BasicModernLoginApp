@@ -1,0 +1,157 @@
+{
+  "uuid": "b899d587-e813-49fe-be3b-f6bf76b2cf74",
+  "lastMigration": 18,
+  "name": "Authentication API",
+  "endpointPrefix": "api/v1",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "d2607102-dcf3-4140-a777-f9e6e72d9397",
+      "documentation": "Validate username and password",
+      "method": "post",
+      "endpoint": "login",
+      "responses": [
+        {
+          "uuid": "3a001e65-1037-42e1-a99c-6aba346bd89b",
+          "body": "{\n  \"message\":\"Invalid Username/Password, unauthorized\"\n}",
+          "latency": 2000,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "4acd4a3d-a198-4853-9bf3-611a3ca8ac87",
+          "body": "{\r\n  \"message\" : \"User Login Successful!\",\r\n  \"user\" : {\r\n    \"id\": 1,\r\n    \"name\": \"Chaitanya Penjuri\",\r\n    \"email\": \"{{ body 'username' }}\",\r\n    \"access_token\": \"eyJdfwesdf.fewdfoij.vesdrfwerf\"\r\n  }\r\n}",
+          "latency": 3000,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "username",
+              "value": "chaitupenju@mock.com",
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "password",
+              "value": "penjuri",
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "97c9abe2-c4ce-4576-ba4b-244eb17aa2c2",
+      "documentation": "Get User Details, Validate x-access-token Header",
+      "method": "get",
+      "endpoint": "user",
+      "responses": [
+        {
+          "uuid": "186b2eda-0f31-47e6-b699-c15b5059cce4",
+          "body": "{\n  \"message\": \"Invalid access_token, so you are unauthorized\"\n}",
+          "latency": 2000,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "c8e34837-5791-4eb9-8339-9ec47fc2344c",
+          "body": "{\r\n  \"id\": 1,\r\n  \"name\": \"Chaitanya Penjuri\",\r\n  \"email\": \"asdf@bbc.com\",\r\n  \"access_token\": \"eyJdfwesdf.fewdfoij.vesdrfwerf\"\r\n}",
+          "latency": 2500,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "x-access-token",
+              "value": "eyJdfwesdf.fewdfoij.vesdrfwerf",
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "f973219f-e065-43a7-9c59-1699b4888c9d",
+      "documentation": "Logout the User",
+      "method": "get",
+      "endpoint": "logout",
+      "responses": [
+        {
+          "uuid": "d4474238-e7a7-4c0c-8609-f7eb3094b676",
+          "body": "{\n  \"message\": \"User Logged out Successfully!\"\n}",
+          "latency": 1000,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "https": false,
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}
