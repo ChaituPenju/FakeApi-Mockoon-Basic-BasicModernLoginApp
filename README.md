@@ -18,8 +18,8 @@ The below three REST APIs are used.
 
 ### Request Body
     { 
-        "username": "", 
-        "password": "" 
+        "username": "johndoe@mock.com", 
+        "password": "iforgotpassword" 
     }
 
 ### Success Response
