@@ -1,4 +1,4 @@
-# FakeApi-Mockoon-Basic-BasicModernLoginApp
+# FakeApi-Mockoon-BasicModernLoginApp
 This is a fake mockoon REST API which is used for [BasicModernLoginApp](https://github.com/ChaituPenju/BasicModernLoginApp)
 
 Please import `fakeapi_basicmodernloginapp.json` file into your mockoon environment.
